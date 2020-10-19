@@ -2,7 +2,8 @@ var app = new Vue({
     el: '#app',
     data: {
       message: null,
-      imageUrl: null
+      imageUrl: null,
+      title: null
     }, 
     created: function(){
         console.log("mounted");
@@ -26,6 +27,7 @@ var app = new Vue({
             var content = result.data.data.homePage;
             app.message = content.welcomeText;
             app.imageUrl = content.heroImage.url;
+            app.title = content.name;
             document.title = 'Umbraco CMS - ' + content.name;
         });
     }
