@@ -13,7 +13,7 @@ var app = new Vue({
             headers: {'umb-project-alias':'vis-s-amiable-turtle', 'Content-Type': 'application/json'},
             data:{
                 query:`{
-                    homePage(url: "/home/") {
+                    homePage(url: "/awesome-page/") {
                       name
                       welcomeText
                       heroImage{
