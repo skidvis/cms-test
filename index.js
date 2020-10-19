@@ -13,6 +13,7 @@ var app = new Vue({
             data:{
                 query:`{
                     homePage(url: "/home/") {
+                      name
                       welcomeText
                       heroImage{
                           url
@@ -22,14 +23,10 @@ var app = new Vue({
             }
         })
         .then(function (result) {
-            console.log(result.data.data.homePage.welcomeText);
-            app.message = result.data.data.homePage.welcomeText;
-            app.imageUrl = result.data.data.homePage.heroImage.url;
+            var content = result.data.data.homePage;
+            app.message = content.welcomeText;
+            app.imageUrl = content.heroImage.url;
+            document.title = 'Umbraco CMS - ' + content.name;
         });
-    },
-    methods:{
-        doThis: function(text){
-            this.message = text;
-        }
     }
   })
