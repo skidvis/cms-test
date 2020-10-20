@@ -1,15 +1,80 @@
-<html>
-    <head>
-        <title>Loading...</title>     
-        <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>       
-        <script src="https://cdnjs.cloudflare.com/ajax/libs/axios/0.20.0/axios.min.js" crossorigin="anonymous"></script> 
-    </head>
-    <body>
-        <div id="app">
-            <h1>{{message}}</h1>
-            <hr />
-            <img :src="imageUrl" />
+<!-- inject:partials/header.html -->
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta http-equiv="x-ua-compatible" content="ie=edge">
+    <meta name="description" content="">
+    <meta name="keywords" content="">
+    <meta name="author" content="">
+    <title>Aries Free HTML Template</title>
+    <link rel="shortcut icon" href="assets/img/favicon.ico">
+
+    <!-- build:css -->
+    <link rel="stylesheet" href="assets/css/main.css">
+    <!-- endbuild -->
+    
+    <link rel="stylesheet" href="assets/css/theme.css">
+    <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>       
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/axios/0.20.0/axios.min.js" crossorigin="anonymous"></script>       
+  </head>
+
+  <body>      
+    <div id="app">
+    <nav class="navbar navbar-expand-md navbar-custom fixed-top">
+        <div class="container">
+            <a class="navbar-brand" href="index.html">{{title}}</a>
         </div>
-        <script src="index.js"></script>   
-    </body>
+    </nav>
+<!-- endinject -->
+
+<!-- Intro -->
+<div class="intro">
+<div class="intro-body">
+	<div class="container">
+		<div class="row justify-content-center">
+			<div class="col-md-8">
+				<h1 class="brand-heading">{{subheading}}</h1>
+				<p class="intro-text" v-html="mainText"></p>
+				<a href="#pageid" class="btn btn-circle page-scroll">
+				<i class="fa fa-angle-double-down animated"></i>
+				</a>
+			</div>
+		</div>
+	</div>
+</div>
+</div>
+
+<!-- Section -->
+<section id="pageid">
+<div class="container content-section">
+	<div class="row justify-content-center">
+		<div class="col-md-8">
+            <img :src="imageUrl" />
+            <p v-html="subText"></p>
+		</div>
+	</div>
+</div>
+</section>
+
+<!-- inject:partials/footer.html -->
+<footer>
+<div class="container text-center">
+    <p class="credits">
+        Copyright &copy; Your Website 2018<br/>
+        <a class="highlightlink" target="_blank" href="https://www.wowthemes.net">"Aries" Template by WowThemes.net</a>
+    </p>
+</div>
+</footer>
+</div>
+<!-- build:js -->
+<script src="assets/js/main.js"></script>
+<!-- endbuild -->
+
+<script src="assets/js/theme.js"></script>
+<script src="index.js"></script> 
+</body>
+
 </html>
+<!-- endinject -->

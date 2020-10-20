@@ -1,7 +1,9 @@
 var app = new Vue({
     el: '#app',
     data: {
-      message: null,
+      subheading: null,
+      mainText: null, 
+      subText: null,
       imageUrl: null,
       title: null
     }, 
@@ -15,7 +17,9 @@ var app = new Vue({
                 query:`{
                     homePage(url: "/awesome-page/") {
                       name
-                      welcomeText
+                      subheading
+                      mainText
+                      subText
                       heroImage{
                           url
                       }
@@ -25,7 +29,9 @@ var app = new Vue({
         })
         .then(function (result) {
             var content = result.data.data.homePage;
-            app.message = content.welcomeText;
+            app.subheading = content.subheading;
+            app.mainText = content.mainText;
+            app.subText = content.subText;
             app.imageUrl = content.heroImage.url;
             app.title = content.name;
             document.title = 'Umbraco CMS - ' + content.name;
