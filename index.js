@@ -4,7 +4,6 @@ var app = new Vue({
       homePage: {}      
     }, 
     created: function(){
-        console.log("mounted");
         axios({
             method: 'post',
             url: 'https://graphql.umbraco.io',
