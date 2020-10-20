@@ -19,6 +19,8 @@ var app = new Vue({
                       heroImage{
                           url
                       }
+                      css
+                      javascript
                     }
                   }`            
             }
@@ -26,6 +28,23 @@ var app = new Vue({
         .then(function (result) {
             app.homePage = result.data.data.homePage;
             document.title = 'Umbraco CMS - ' + app.homePage.name;
+
+            if(app.homePage.css){
+              var style=document.createElement('style');
+              style.type = 'text/css';
+              style.appendChild(document.createTextNode(app.homePage.css));
+              document.head.appendChild(style);
+            }
+
+            if(app.homePage.javascript){
+              var script=document.createElement('script');
+              script.type = 'text/javascript';
+              script.appendChild(document.createTextNode(app.homePage.javascript));
+              document.head.appendChild(script);
+              loadComplete();
+            }
+
+            console.log(app.homePage);
         });
     }
   })
