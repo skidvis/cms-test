@@ -10,7 +10,7 @@ var app = new Vue({
         axios({
             method: 'post',
             url: 'https://graphql.umbraco.io',
-            headers: {'umb-project-alias':'vis-s-amiable-turtle', 'Content-Type': 'application/json'},
+            headers: {'umb-project-alias':'vis-bu-demo', 'Content-Type': 'application/json'},
             data:{
                 query:`{
                     homePage(url: "/awesome-page/") {
