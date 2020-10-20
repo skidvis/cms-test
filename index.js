@@ -1,11 +1,7 @@
 var app = new Vue({
     el: '#app',
     data: {
-      subheading: null,
-      mainText: null, 
-      subText: null,
-      imageUrl: null,
-      title: null
+      homePage: {}      
     }, 
     created: function(){
         console.log("mounted");
@@ -28,13 +24,8 @@ var app = new Vue({
             }
         })
         .then(function (result) {
-            var content = result.data.data.homePage;
-            app.subheading = content.subheading;
-            app.mainText = content.mainText;
-            app.subText = content.subText;
-            app.imageUrl = content.heroImage.url;
-            app.title = content.name;
-            document.title = 'Umbraco CMS - ' + content.name;
+            app.homePage = result.data.data.homePage;
+            document.title = 'Umbraco CMS - ' + app.homePage.name;
         });
     }
   })
