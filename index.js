@@ -10,7 +10,7 @@ var app = new Vue({
             headers: {
               'umb-project-alias':'vis-bu-demo', 
               'Content-Type': 'application/json',
-              "Authorization": "Basic VFBkTWxpMGE3Rkcwdlc1TXE2MzM="
+              "Authorization": "Basic VFBkTWxpMGE3Rkcwdlc1TXE2MzM6"
             },
             data:{
                 query:`{
