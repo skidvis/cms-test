@@ -13,8 +13,7 @@ var app = new Vue({
             },
             data:{
                 query:`query{
-                  homePageCollection(preview: true, where: {url: "/awesome-page"}){
-                    items{
+                  homePage(id:"70JtZPJfI5sEt52uNitY8r"){
                       name
                       subHeading
                       mainText{json}
@@ -22,7 +21,6 @@ var app = new Vue({
                       heroImage{url}
                       css
                       javascript
-                    }
                   }
                 }`
             }
