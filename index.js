@@ -12,20 +12,19 @@ var app = new Vue({
               "Authorization": "Bearer sAS2Gng5fza4279fpKeIZgOORw6LR6cps6vz1EMyzN0"
             },
             data:{
-                query:`query($preview:Boolean){
-                    homePage(url: "/awesome-page") {
+                query:`query{
+                  homePageCollection(preview: true, where: {url: "/awesome-page"}){
+                    items{
                       name
-                      subheading
-                      mainText
-                      subText
-                      heroImage{
-                          url
-                      }
+                      subHeading
+                      mainText{json}
+                      subText{json}
+                      heroImage{url}
                       css
                       javascript
                     }
-                  }`,
-                  variables: {preview: true}            
+                  }
+                }`
             }
         })
         .then(function (result) {
