@@ -6,15 +6,14 @@ var app = new Vue({
     created: function(){
         axios({
             method: 'post',
-            url: 'https://graphql.umbraco.io',
+            url: 'https://graphql.contentful.com/content/v1/spaces/x9xb4r349pvz',
             headers: {
-              'umb-project-alias':'vis-bu-demo', 
               'Content-Type': 'application/json',
-              "Authorization": "Basic VFBkTWxpMGE3Rkcwdlc1TXE2MzM6"
+              "Authorization": "Bearer sAS2Gng5fza4279fpKeIZgOORw6LR6cps6vz1EMyzN0"
             },
             data:{
-                query:`{
-                    homePage(url: "/awesome-page/") {
+                query:`query($preview:Boolean){
+                    homePage(url: "/awesome-page") {
                       name
                       subheading
                       mainText
@@ -25,7 +24,8 @@ var app = new Vue({
                       css
                       javascript
                     }
-                  }`            
+                  }`,
+                  variables: {preview: true}            
             }
         })
         .then(function (result) {
