@@ -18,6 +18,7 @@
     <link rel="stylesheet" href="assets/css/theme.css">
     <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.min.js"></script>       
     <script src="https://cdnjs.cloudflare.com/ajax/libs/axios/0.20.0/axios.min.js" crossorigin="anonymous"></script>      
+    <script src="https://cdn.jsdelivr.net/npm/@contentful/rich-text-html-renderer@14.1.2/dist/rich-text-html-renderer.es5.min.js"></script>
   </head>
 
   <body>      
@@ -53,7 +54,7 @@
 	<div class="row justify-content-center">
 		<div class="col-md-8">
             <img v-if="homePage.heroImage" v-bind:src="homePage.heroImage.url" />
-            <p v-html="homePage.subText"></p>
+            <p v-html="documentToHtmlString(homePage.subText)"></p>
 		</div>
 	</div>
 </div>
