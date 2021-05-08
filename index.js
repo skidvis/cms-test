@@ -40,7 +40,7 @@ var app = new Vue({
               var script=document.createElement('script');
               script.type = 'text/javascript';
               script.appendChild(document.createTextNode(app.homePage.javascript));
-              document.head.appendChild(script);
+              //document.head.appendChild(script);
               //loadComplete();
             }
 
