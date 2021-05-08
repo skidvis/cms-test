@@ -41,7 +41,7 @@ var app = new Vue({
               script.type = 'text/javascript';
               script.appendChild(document.createTextNode(app.homePage.javascript));
               document.head.appendChild(script);
-              loadComplete();
+              //loadComplete();
             }
 
             console.log(app.homePage);
