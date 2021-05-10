@@ -1,53 +1,50 @@
-var app = new Vue({
-    el: '#app',
-    data: {
-      homePage: {},    
-      passedId: '70JtZPJfI5sEt52uNitY8r'
+const App = {
+    data(){
+      return{
+        homePage: null,    
+        passedId: '70JtZPJfI5sEt52uNitY8r',
+        bear: 'sAS2Gng5fza4279fpKeIZgOORw6LR6cps6vz1EMyzN0'
+      }
     }, 
-    created: function(){
+    mounted(){
+      this.doInit();
+    },
+    methods:{
+      doInit(){
         if(window.location.search.includes('=')) this.passedId = window.location.search.split('=')[1];
         let self = this;
-        axios({
-            method: 'post',
-            url: 'https://graphql.contentful.com/content/v1/spaces/x9xb4r349pvz',
-            headers: {
-              'Content-Type': 'application/json',
-              "Authorization": "Bearer sAS2Gng5fza4279fpKeIZgOORw6LR6cps6vz1EMyzN0"
-            },
-            data:{
-                query:`query{
-                  homePage(id:"${self.passedId}"){
-                      name
-                      subHeading
-                      mainText{json}
-                      subText{json}
-                      heroImage{url}
-                      css
-                      javascript
-                  }
-                }`
-            }
+        axios.defaults.headers.post['Content-Type'] = 'application/json';
+        axios.defaults.headers.post['Authorization'] = 'Bearer ' + this.bear;
+
+        axios.post('https://graphql.contentful.com/content/v1/spaces/x9xb4r349pvz', {
+          query:`query{
+            homePage(id:"${self.passedId}", preview: true){
+                name
+                subHeading
+                mainText{json}
+                subText{json}
+                heroImage{url}
+                css
+                javascript
+              }
+            }`
+          })
+        .then((result) => {
+            console.log(result);
+            this.homePage = result.data.data.homePage;
+            document.title = 'Umbraco CMS - ' + this.homePage.name;
+            console.log(this.homePage);
         })
-        .then(function (result) {
-            app.homePage = result.data.data.homePage;
-            document.title = 'Umbraco CMS - ' + app.homePage.name;
-
-            if(app.homePage.css){
-              var style=document.createElement('style');
-              style.type = 'text/css';
-              style.appendChild(document.createTextNode(app.homePage.css));
-              document.head.appendChild(style);
-            }
-
-            if(app.homePage.javascript){
-              var script=document.createElement('script');
-              script.type = 'text/javascript';
-              script.appendChild(document.createTextNode(app.homePage.javascript));
-              //document.head.appendChild(script);
-              //loadComplete();
-            }
-
-            console.log(app.homePage);
-        });
+        .catch((error) => {
+          console.log(error);
+        });        
+      },
+      jsonToHtml(string){
+        console.log(string);
+        return window.documentToHtmlString(string);
+      }
     }
-  })
+  };
+
+  const vm = Vue.createApp(App);
+  vm.mount('#app');
