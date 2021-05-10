@@ -1,9 +1,12 @@
 var app = new Vue({
     el: '#app',
     data: {
-      homePage: {}      
+      homePage: {},    
+      passedId: '70JtZPJfI5sEt52uNitY8r'
     }, 
     created: function(){
+        if(window.location.search.includes('=')) this.passedId = window.location.search.split('=')[1];
+
         axios({
             method: 'post',
             url: 'https://graphql.contentful.com/content/v1/spaces/x9xb4r349pvz',
@@ -13,7 +16,7 @@ var app = new Vue({
             },
             data:{
                 query:`query{
-                  homePage(id:"70JtZPJfI5sEt52uNitY8r"){
+                  homePage(id:"${this.passedId}"){
                       name
                       subHeading
                       mainText{json}
