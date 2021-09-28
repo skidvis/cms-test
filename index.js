@@ -19,14 +19,10 @@ const App = {
         axios.post('https://graphql.contentful.com/content/v1/spaces/x9xb4r349pvz', {
           query:`query{
             offering(id:"${self.passedId}", preview: true){
-                name
-                subHeading
-                mainText{json}
-                subText{json}
-                heroImage{url}
-                css
-                javascript
-                innerhtml
+                title
+                url
+                cssStyles
+                offeringType
               }
             }`
           })
