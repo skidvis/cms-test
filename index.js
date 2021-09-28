@@ -2,7 +2,7 @@ const App = {
     data(){
       return{
         homePage: null,    
-        passedId: '70JtZPJfI5sEt52uNitY8r',
+        passedId: '3JEVspMLVgAahSY7hmpcpn',
         bear: 'sAS2Gng5fza4279fpKeIZgOORw6LR6cps6vz1EMyzN0'
       }
     }, 
@@ -26,13 +26,14 @@ const App = {
                 heroImage{url}
                 css
                 javascript
+                innerhtml
               }
             }`
           })
         .then((result) => {
             console.log(result);
             this.homePage = result.data.data.homePage;
-            document.title = 'Umbraco CMS - ' + this.homePage.name;
+            document.title = `${window.location.host}:${this.homePage.name}`;
             console.log(this.homePage);
         })
         .catch((error) => {
